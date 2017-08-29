@@ -24,8 +24,34 @@ var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+// Toggle children.
+function toggle(d) {
+    if (d.children) {
+        d._children = d.children;
+        d.children = null;
+    } else {
+        d.children = d._children;
+        d._children = null;
+    }
+}
+// moveChildren("./flare.json");
+d3.json("./flare.json", function (error, flare) {
+    root = flare
+    function toggleAll(d) {
+        if (d.children) {
+            d.children.forEach(toggleAll);
+            toggle(d);
+        }
+    }
 
-d3.json("./trial.json", function (error, flare) {
+    // Initialize the display to show a few nodes.
+    root.children.forEach(toggleAll);
+    toggle(root.children[1]);
+    toggle(root.children[1].children[2]);
+    toggle(root.children[9]);
+    toggle(root.children[9].children[0]);
+
+    update(root);
     if (error) throw error;
 
     flare.x0 = 0;
