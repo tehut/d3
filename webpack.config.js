@@ -1,5 +1,12 @@
+const path = require('path');
 var webpack = require('webpack');
 var DashboardPlugin = require('webpack-dashboard/plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+    template: 'src/index.html',
+    filename: 'index.html',
+    inject: 'body'
+})
 
 module.exports = {
     entry: ['babel-polyfill', './src/index.js'],
@@ -16,7 +23,7 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        contentBase: './build',
+        contentBase: './src',
         historyApiFallback: true,
         hot: true,
         inline: true,
@@ -26,6 +33,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin({
             multiStep: true
         }),
-        new DashboardPlugin()
+        new DashboardPlugin(),
+        HtmlWebpackPluginConfig
     ]
 };
