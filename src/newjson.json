@@ -13,6 +13,9 @@
                         },
                         {
                             "name": "Etcd"
+                        },
+                        {
+                            "name": "Scheduler"
                         }
                         
                     ]
