@@ -22,7 +22,7 @@ var vis = d3.select("body").append("svg")
     .append("g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
-d3.json("flare.json", function (json) {
+d3.json("newjson.json", function (json) {
     root = json;
     console.log(json)
     console.log(h)
@@ -38,11 +38,15 @@ d3.json("flare.json", function (json) {
     }
 
     // Initialize the display to show a few nodes.
-    root.children.forEach(toggleAll);
+    // root.children.forEach(toggleAll);
     toggle(root.children[1]);
-    toggle(root.children[1].children[2]);
-    toggle(root.children[9]);
-    toggle(root.children[9].children[0]);
+    toggle(root.children[2]);
+    toggle(root.children[3]);
+
+
+    // toggle(root.children[1]);
+    // toggle(root.children[9]);
+    // toggle(root.children[9].children[0]);
 
     update(root);
 });
