@@ -1,7 +1,7 @@
 var  d3 = require('d3')
 var $ = require('jquery')
+// $.material.init()
 
-console.log("in this")
 var m = [20, 120, 20, 120],
     w = 1280, //- m[1] - m[3],,
     h = 800 ,//- m[0] - m[2],
@@ -14,19 +14,14 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function (d) { return [d.y, d.x]; });
 
-var vis = d3.select("body").append("svg")
+var vis = d3.select(".body").append("svg")
     .attr("width", w)
     .attr('height', h)
-    // .attr("width", w + m[1] + m[3])
-    // .attr("height", h + m[0] + m[2])
     .append("g")
     .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
 
 d3.json("newjson.json", function (json) {
     root = json;
-    console.log(json)
-    console.log(h)
-    console.log(root)
     root.x0 = h / 2;
     root.y0 = 0;
 

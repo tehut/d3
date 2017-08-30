@@ -1,37 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="../index.js"></script>
-  <title>D3 Webpack Babel</title>
+  <title>Cluster Visualization</title>
+<!-- Latest compiled and minified CSS -->
+  <link href="simple-sidebar.css" rel="stylesheet"> 
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+  crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+  crossorigin="anonymous"></script> 
+<script>
+  $(document).ready((function(){
+    $("#wrapper").toggleClass("toggled") 
+  }));
+</script>
   <style>
+    *{margin:1%}
     .node rect {
       cursor: pointer;
-      fill: #fff;
-      fill-opacity: .5;
-      stroke: #3182bd;
-      stroke-width: 1.5px;
+      fill: #000000;
+      fill-opacity: .09;
+      stroke: #000000;
+      stroke-width: 5.5px;
     }
 
     .node text {
-      font: 10px sans-serif;
-      pointer-events: none;
+      font: 13px sans-serif;
+      pointer-events:visibleStroke;
     }
 
     path.link {
       fill: none;
       stroke: #9ecae1;
-      stroke-width: 1.5px;
+      stroke-width: 2.5px;
+    }
+    .navbar{
+      background-color: #9ecaff;
     }
   </style>
 </head>
 <body>
-Words
-<!-- 
-<button class="deploy"> Deploy </button>
+  <div>
+    <h1> Cluster Visualisation </h1>
+    </div>
+<div id="wrapper">
 
+  <!-- Sidebar -->
+   <div id="sidebar-wrapper"> 
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <h3>
+                       Click a node to schedule pods!
+                    </h3>
+      
+  </div>
+  <!-- /#sidebar-wrapper -->
 
-    <svg width="700" height="500" class="datavis"></svg>   -->
-  
+  <!-- Page Content -->
+   <div id="page-content-wrapper"> 
+    <div class="container-fluid">
+      <section class="body">
+   
+       </section>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<!-- Bootstrap core JavaScript -->
+ 
+<main>
+</main>
  </body>
 </html> 

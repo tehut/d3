@@ -1,0 +1,465 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "kubernetes.io/created-by": "{\"kind\":\"SerializedReference\",\"apiVersion\":\"v1\",\"reference\":{\"kind\":\"ReplicaSet\",\"namespace\":\"default\",\"name\":\"hootlet-1332677408\",\"uid\":\"99775380-82a3-11e7-a047-02d057c4107e\",\"apiVersion\":\"extensions\",\"resourceVersion\":\"108154\"}}\n"
+                },
+                "creationTimestamp": "2017-08-16T16:54:42Z",
+                "generateName": "hootlet-1332677408-",
+                "labels": {
+                    "pod-template-hash": "1332677408",
+                    "run": "hootlet"
+                },
+                "name": "hootlet-1332677408-22lq2",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "extensions/v1beta1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicaSet",
+                        "name": "hootlet-1332677408",
+                        "uid": "99775380-82a3-11e7-a047-02d057c4107e"
+                    }
+                ],
+                "resourceVersion": "1600989",
+                "selfLink": "/api/v1/namespaces/default/pods/hootlet-1332677408-22lq2",
+                "uid": "99796460-82a3-11e7-a047-02d057c4107e"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "API_ID",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "api_id",
+                                        "name": "mysecret"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "API_KEY",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "api_key",
+                                        "name": "mysecret"
+                                    }
+                                }
+                            },
+                            {
+                                "name": "SECRET_KEY_BASE",
+                                "valueFrom": {
+                                    "secretKeyRef": {
+                                        "key": "secret_key_base",
+                                        "name": "mysecret"
+                                    }
+                                }
+                            }
+                        ],
+                        "image": "tehut/hootlet:latest",
+                        "imagePullPolicy": "Always",
+                        "name": "hootlet",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-80qll",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "nodeName": "ip-10-0-9-165.us-west-2.compute.internal",
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.alpha.kubernetes.io/notReady",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.alpha.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-80qll",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-80qll"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2017-08-16T16:54:42Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2017-08-16T16:54:44Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2017-08-16T16:54:42Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "docker://1331b8098bbf6d51a78671910367802ef60b6d8516ea756fd3af5d4ecea19836",
+                        "image": "tehut/hootlet:latest",
+                        "imageID": "docker-pullable://tehut/hootlet@sha256:a6feed02b38592925d437870bf0c39a63aedea104ce57044d50e825f13f27923",
+                        "lastState": {},
+                        "name": "hootlet",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2017-08-16T16:54:44Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.0.9.165",
+                "phase": "Running",
+                "podIP": "192.168.129.3",
+                "qosClass": "BestEffort",
+                "startTime": "2017-08-16T16:54:42Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"run\":\"hootlet\"},\"name\":\"hootlet\",\"namespace\":\"default\"},\"spec\":{\"ports\":[{\"nodePort\":30350,\"port\":80,\"targetPort\":3000}],\"selector\":{\"run\":\"hootlet\"},\"type\":\"LoadBalancer\"}}\n"
+                },
+                "creationTimestamp": "2017-08-15T21:45:30Z",
+                "labels": {
+                    "run": "hootlet"
+                },
+                "name": "hootlet",
+                "namespace": "default",
+                "resourceVersion": "26941",
+                "selfLink": "/api/v1/namespaces/default/services/hootlet",
+                "uid": "0f07fd0c-8203-11e7-a047-02d057c4107e"
+            },
+            "spec": {
+                "clusterIP": "10.104.210.12",
+                "externalTrafficPolicy": "Cluster",
+                "ports": [
+                    {
+                        "nodePort": 30350,
+                        "port": 80,
+                        "protocol": "TCP",
+                        "targetPort": 3000
+                    }
+                ],
+                "selector": {
+                    "run": "hootlet"
+                },
+                "sessionAffinity": "None",
+                "type": "LoadBalancer"
+            },
+            "status": {
+                "loadBalancer": {
+                    "ingress": [
+                        {
+                            "hostname": "a0f07fd0c820311e7a04702d057c4107-1770956204.us-west-2.elb.amazonaws.com"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "creationTimestamp": "2017-08-15T18:01:28Z",
+                "labels": {
+                    "component": "apiserver",
+                    "provider": "kubernetes"
+                },
+                "name": "kubernetes",
+                "namespace": "default",
+                "resourceVersion": "45",
+                "selfLink": "/api/v1/namespaces/default/services/kubernetes",
+                "uid": "c2d830f6-81e3-11e7-a047-02d057c4107e"
+            },
+            "spec": {
+                "clusterIP": "10.96.0.1",
+                "ports": [
+                    {
+                        "name": "https",
+                        "port": 443,
+                        "protocol": "TCP",
+                        "targetPort": 6443
+                    }
+                ],
+                "sessionAffinity": "ClientIP",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "Deployment",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/revision": "1",
+                    "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"extensions/v1beta1\",\"kind\":\"Deployment\",\"metadata\":{\"annotations\":{},\"name\":\"hootlet\",\"namespace\":\"default\"},\"spec\":{\"replicas\":1,\"template\":{\"metadata\":{\"labels\":{\"run\":\"hootlet\"}},\"spec\":{\"containers\":[{\"env\":[{\"name\":\"API_ID\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"api_id\",\"name\":\"mysecret\"}}},{\"name\":\"API_KEY\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"api_key\",\"name\":\"mysecret\"}}},{\"name\":\"SECRET_KEY_BASE\",\"valueFrom\":{\"secretKeyRef\":{\"key\":\"secret_key_base\",\"name\":\"mysecret\"}}}],\"image\":\"tehut/hootlet:latest\",\"name\":\"hootlet\",\"ports\":[{\"containerPort\":80}]}]}}}}\n"
+                },
+                "creationTimestamp": "2017-08-16T16:54:42Z",
+                "generation": 1,
+                "labels": {
+                    "run": "hootlet"
+                },
+                "name": "hootlet",
+                "namespace": "default",
+                "resourceVersion": "1601024",
+                "selfLink": "/apis/extensions/v1beta1/namespaces/default/deployments/hootlet",
+                "uid": "9976dd7b-82a3-11e7-a047-02d057c4107e"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "run": "hootlet"
+                    }
+                },
+                "strategy": {
+                    "rollingUpdate": {
+                        "maxSurge": 1,
+                        "maxUnavailable": 1
+                    },
+                    "type": "RollingUpdate"
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "run": "hootlet"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "API_ID",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "api_id",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "API_KEY",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "api_key",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SECRET_KEY_BASE",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "secret_key_base",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "tehut/hootlet:latest",
+                                "imagePullPolicy": "Always",
+                                "name": "hootlet",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2017-08-16T16:54:42Z",
+                        "lastUpdateTime": "2017-08-16T16:54:42Z",
+                        "message": "Deployment has minimum availability.",
+                        "reason": "MinimumReplicasAvailable",
+                        "status": "True",
+                        "type": "Available"
+                    }
+                ],
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "extensions/v1beta1",
+            "kind": "ReplicaSet",
+            "metadata": {
+                "annotations": {
+                    "deployment.kubernetes.io/desired-replicas": "1",
+                    "deployment.kubernetes.io/max-replicas": "2",
+                    "deployment.kubernetes.io/revision": "1"
+                },
+                "creationTimestamp": "2017-08-16T16:54:42Z",
+                "generation": 1,
+                "labels": {
+                    "pod-template-hash": "1332677408",
+                    "run": "hootlet"
+                },
+                "name": "hootlet-1332677408",
+                "namespace": "default",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "extensions/v1beta1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "Deployment",
+                        "name": "hootlet",
+                        "uid": "9976dd7b-82a3-11e7-a047-02d057c4107e"
+                    }
+                ],
+                "resourceVersion": "1601016",
+                "selfLink": "/apis/extensions/v1beta1/namespaces/default/replicasets/hootlet-1332677408",
+                "uid": "99775380-82a3-11e7-a047-02d057c4107e"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "matchLabels": {
+                        "pod-template-hash": "1332677408",
+                        "run": "hootlet"
+                    }
+                },
+                "template": {
+                    "metadata": {
+                        "creationTimestamp": null,
+                        "labels": {
+                            "pod-template-hash": "1332677408",
+                            "run": "hootlet"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "API_ID",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "api_id",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "API_KEY",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "api_key",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "SECRET_KEY_BASE",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "secret_key_base",
+                                                "name": "mysecret"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "tehut/hootlet:latest",
+                                "imagePullPolicy": "Always",
+                                "name": "hootlet",
+                                "ports": [
+                                    {
+                                        "containerPort": 80,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 1,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
