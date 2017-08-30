@@ -1,8 +1,8 @@
 {
-    "name": "Cluster 1234",
+    "name": "cluster",
     "children": [
         {
-            "name": "Control Plane",
+            "name": "analytics",
             "children": [
                 {
                     "name": "cluster",
@@ -42,12 +42,8 @@
                     ]
                 },
                 {
-                    "name": "optimization",
-                    "children": [
-                        {
-                            "name": "AspectRatioBanker"
-                        }
-                    ]
+                    "name": "optimization"
+                   
                 }
             ]
         },
@@ -810,7 +806,8 @@
                             "name": "SortOperator"
                         }
                     ]
-                },
+                }
+                ,
                 {
                     "name": "Visualization"
                 }
